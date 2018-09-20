@@ -1,15 +1,12 @@
 import os
+import cv2
+import dlib
+import shutil
 import numpy as np
 import skimage
 from skimage import io
-from skimage import transform
-import cv2
-from scipy.misc.pilutil import imsave
+import imutils
 from imutils import face_utils
-import collections
-import dlib
-from glob import glob
-import shutil
 
 # Listing the path of all the celebA images
 def listdir_fullpath(d):
@@ -21,9 +18,9 @@ def face_remap(shape):
 
 def generate_mask():
 
-	image_folder = 'CelebA/img_align_celeba/'
-	save_folder = 'CelebA/output/'
-	nomask_folder = 'CelebA/nomask/'
+	image_folder = 'data/celeba_data/img_align_celeba/'
+	save_folder = 'data/celeba_data/celeba_mask/'
+	nomask_folder = 'data/celeba_data/celeba_nomask/'
 	
 	if not os.path.exists(save_folder):
 		os.mkdir(save_folder)
@@ -32,7 +29,7 @@ def generate_mask():
 		os.mkdir(nomask_folder)
 		
 	mask_count = 0
-	list_img_full=listdir_fullpath('data/CelebA/img_align_celeba/') #change 
+	list_img_full=listdir_fullpath('data/celeba_data/img_align_celeba/') 
 
 	for i, image_path in enumerate(list_img_full):
 
@@ -49,7 +46,7 @@ def generate_mask():
 	  
 
 		out_face = np.zeros((image.shape[0], image.shape[1]))
-		SHAPE_PREDICTOR = 'shape_predictor_68_face_landmarks.dat'		#change
+		SHAPE_PREDICTOR = 'data/landmarks/shape_predictor_68_face_landmarks.dat'
 		# initialize dlib's face detector (HOG-based) and then create the facial landmark predictor
 		detector = dlib.get_frontal_face_detector()
 		predictor = dlib.shape_predictor(SHAPE_PREDICTOR)

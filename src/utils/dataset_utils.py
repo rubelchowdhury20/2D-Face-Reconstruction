@@ -31,7 +31,6 @@ def download_files(synthetic_file_name, synthetic_file_id,
 		os.makedirs(landmarks_path)
 
 
-	#if(not os.path.exists(synthetic_path) || )
 	print("Download is in progress for synthetic data...")
 	download_file_from_google_drive(synthetic_file_id, synthetic_path + synthetic_file_name)
 	print("Download is in progress for celeba data...")
