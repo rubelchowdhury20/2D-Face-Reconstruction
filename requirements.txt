@@ -1,5 +1,6 @@
 gdown
 opencv-python
 scikit-image
+cmake
 dlib
 imutils
