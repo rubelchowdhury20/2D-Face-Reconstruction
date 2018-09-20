@@ -1,1 +1,5 @@
 gdown
+opencv-python
+scikit-image
+dlib
+imutils
