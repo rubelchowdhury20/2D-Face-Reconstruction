@@ -3,7 +3,7 @@ import argparse
 from src import utils
 
 def main(args):
-	utils.download_file(
+	utils.load_dataset(
 		args.synthetic_file_name, args.synthetic_file_id,
 		args.celeba_file_name, args.celeba_file_id,
 		args.mask_landmarks_name, args.mask_landmarks_id)

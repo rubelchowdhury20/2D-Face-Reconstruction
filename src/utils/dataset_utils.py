@@ -1,12 +1,28 @@
 import os
 import requests
+import tarfile
+import zipfile
 
-def download_file(synthetic_file_name, synthetic_file_id,
+
+synthetic_path = "./data/synthetic_data/"
+celeba_path = "./data/celeba_data/"
+landmarks_path = "./data/landmarks/"
+
+
+def load_dataset(synthetic_file_name, synthetic_file_id,
 		celeba_file_name, celeba_file_id,
 		mask_landmarks_name, mask_landmarks_id):
-	synthetic_path = "./data/synthetic_data/"
-	celeba_path = "./data/celeba_data/"
-	landmarks_path = "./data/landmarks"
+	
+	download_files(synthetic_file_name, synthetic_file_id,
+		celeba_file_name, celeba_file_id,
+		mask_landmarks_name, mask_landmarks_id)
+	unzip_files(synthetic_file_name, celeba_file_name, mask_landmarks_name)
+	delete_zip_files(synthetic_file_name, celeba_file_name, mask_landmarks_name)
+
+
+def download_files(synthetic_file_name, synthetic_file_id,
+		celeba_file_name, celeba_file_id,
+		mask_landmarks_name, mask_landmarks_id):
 
 	if not os.path.exists(synthetic_path):
 	    os.makedirs(synthetic_path)
@@ -15,9 +31,31 @@ def download_file(synthetic_file_name, synthetic_file_id,
 	if not os.path.exists(landmarks_path):
 	    os.makedirs(landmarks_path)
 
+
 	download_file_from_google_drive(synthetic_file_id, synthetic_path + synthetic_file_name)
 	download_file_from_google_drive(celeba_file_id, celeba_path + celeba_file_name)
 	download_file_from_google_drive(mask_landmarks_id, landmarks_path + mask_landmarks_name)
+
+def unzip_files(synthetic_file_name, celeba_file_name, mask_landmarks_name):
+    tar = tarfile.open(synthetic_path + synthetic_file_name, "r:gz")
+    tar.extractall(synthetic_path)
+    tar.close()
+
+    zip_celeba = zipfile.open(celeba_path + celeba_file_name, "r")
+    zip_celeba.extractall(celeba_path)
+    zip_celeba.close()
+
+    zip_landmarks = zipfile.open(landmarks_path + mask_landmarks_name, "r")
+    zip_landmarks.extractall(landmarks_path)
+    zip_landmarks.close()
+
+def delete_zip_files(synthetic_file_name, celeba_file_name, mask_landmarks_name):
+	os.remove(synthetic_path + synthetic_file_name)
+	os.remove(celeba_path + celeba_file_name)
+	os.remove(landmarks_path + mask_landmarks_name)
+
+
+
 
 
 def download_file_from_google_drive(id, destination):
