@@ -3,10 +3,12 @@ import argparse
 from src import utils
 
 def main(args):
-	utils.load_dataset(
-		args.synthetic_file_name, args.synthetic_file_id,
-		args.celeba_file_name, args.celeba_file_id,
-		args.mask_landmarks_name, args.mask_landmarks_id)
+	# utils.load_dataset(
+	# 	args.synthetic_file_name, args.synthetic_file_id,
+	# 	args.celeba_file_name, args.celeba_file_id,
+	# 	args.mask_landmarks_name, args.mask_landmarks_id)
+
+	utils.generate_mask(args.skipnet_batch_size)
 
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser()
@@ -40,5 +42,11 @@ if __name__ == '__main__':
 		type=str,
 		default="1NjkXxViYxZF1-xB_3mfrTEyKTYqLea8s",
 		help="Google Drive id for Mask Landmarks weights")
+	parser.add_argument(
+		"--skipnet_batch_size",
+		type=int,
+		default=10,
+		help="batch size"
+		)
 
 	main(parser.parse_args())

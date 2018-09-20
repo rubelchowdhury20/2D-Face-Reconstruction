@@ -16,7 +16,7 @@ def face_remap(shape):
   remapped_image = cv2.convexHull(shape)
   return remapped_image
 
-def generate_mask():
+def generate_mask(skipnet_batch_size):
 
 	image_folder = 'data/celeba_data/img_align_celeba/'
 	save_folder = 'data/celeba_data/celeba_mask/'
@@ -83,5 +83,3 @@ def generate_mask():
 			mask_count-=1
 			shutil.move(image_path, nomask_folder + "/" + name)		#create
 			print("Mask is not created for "+name+". Image is moved out!")
-
-generate_mask()
