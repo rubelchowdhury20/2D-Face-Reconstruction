@@ -47,12 +47,12 @@ def unzip_files(synthetic_file_name, celeba_file_name, mask_landmarks_name):
 	tar.close()
 
 	print("Unzipping the zip file of celeba data")
-	zip_celeba = zipfile.Zipfile(celeba_path + celeba_file_name, "r")
+	zip_celeba = zipfile.ZipFile(celeba_path + celeba_file_name, "r")
 	zip_celeba.extractall(celeba_path)
 	zip_celeba.close()
 
 	print("Unzipping the zip file of landmark weights")
-	zip_landmarks = zipfile.Zipfile(landmarks_path + mask_landmarks_name, "r")
+	zip_landmarks = zipfile.ZipFile(landmarks_path + mask_landmarks_name, "r")
 	zip_landmarks.extractall(landmarks_path)
 	zip_landmarks.close()
 	print("Unzip completed.")
