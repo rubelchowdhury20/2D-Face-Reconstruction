@@ -83,3 +83,5 @@ def generate_mask():
 			mask_count-=1
 			shutil.move(image_path, nomask_folder + "/" + name)		#create
 			print("Mask is not created for "+name+". Image is moved out!")
+
+generate_mask()

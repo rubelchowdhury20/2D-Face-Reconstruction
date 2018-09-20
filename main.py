@@ -8,8 +8,6 @@ def main(args):
 		args.celeba_file_name, args.celeba_file_id,
 		args.mask_landmarks_name, args.mask_landmarks_id)
 
-	
-
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser()
 	parser.add_argument(
