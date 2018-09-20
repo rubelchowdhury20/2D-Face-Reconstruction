@@ -32,22 +32,30 @@ def download_files(synthetic_file_name, synthetic_file_id,
 	    os.makedirs(landmarks_path)
 
 
+	print("Download is in progress for synthetic data...")
 	download_file_from_google_drive(synthetic_file_id, synthetic_path + synthetic_file_name)
+	print("Download is in progress for celeba data...")
 	download_file_from_google_drive(celeba_file_id, celeba_path + celeba_file_name)
+	print("Download is in progress for landmarks weights...")
 	download_file_from_google_drive(mask_landmarks_id, landmarks_path + mask_landmarks_name)
+	print("Donwload completed.")
 
 def unzip_files(synthetic_file_name, celeba_file_name, mask_landmarks_name):
+	print("Unzipping the tar file of synthetic data")
     tar = tarfile.open(synthetic_path + synthetic_file_name, "r:gz")
     tar.extractall(synthetic_path)
     tar.close()
 
-    zip_celeba = zipfile.open(celeba_path + celeba_file_name, "r")
+    print("Unzipping the zip file of celeba data")
+    zip_celeba = zipfile.Zipfile(celeba_path + celeba_file_name, "r")
     zip_celeba.extractall(celeba_path)
     zip_celeba.close()
 
-    zip_landmarks = zipfile.open(landmarks_path + mask_landmarks_name, "r")
+    print("Unzipping the zip file of landmark weights")
+    zip_landmarks = zipfile.Zipfile(landmarks_path + mask_landmarks_name, "r")
     zip_landmarks.extractall(landmarks_path)
     zip_landmarks.close()
+    print("Unzip completed.")
 
 def delete_zip_files(synthetic_file_name, celeba_file_name, mask_landmarks_name):
 	os.remove(synthetic_path + synthetic_file_name)
@@ -66,7 +74,6 @@ def download_file_from_google_drive(id, destination):
     response = session.get(URL, params = { 'id' : id }, stream = True)
     token = get_confirm_token(response)
 
-    print("Download is in progress.....")
     if token:
         params = { 'id' : id, 'confirm' : token }
         response = session.get(URL, params = params, stream = True)
