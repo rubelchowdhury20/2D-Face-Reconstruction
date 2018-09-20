@@ -1,15 +1,52 @@
 import os
-import gdown
+import requests
 
+def download_file(synthetic_file_name, synthetic_file_id,
+		celeba_file_name, celeba_file_id,
+		mask_landmarks_name, mask_landmarks_id):
+	synthetic_path = "./data/synthetic_data/"
+	celeba_path = "./data/celeba_data/"
+	landmarks_path = "./data/landmarks"
 
-
-def download_file():
-	synthetic_path = "./data/synthetic_data"
 	if not os.path.exists(synthetic_path):
 	    os.makedirs(synthetic_path)
+	if not os.path.exists(celeba_path):
+	    os.makedirs(celeba_path)
+	if not os.path.exists(landmarks_path):
+	    os.makedirs(landmarks_path)
+
+	download_file_from_google_drive(synthetic_file_id, synthetic_path + synthetic_file_name)
+	download_file_from_google_drive(celeba_file_id, celeba_path + celeba_file_name)
+	download_file_from_google_drive(mask_landmarks_id, landmarks_path + mask_landmarks_name)
 
 
-	synthetic_url = 'https://drive.google.com/uc?id=0B7EVK8r0v71pZjFTYXZWM3FlRnM'
-	print("download started")
-	gdown.download(synthetic_url, synthetic_path, quiet=False)
-	print("download completed")
+def download_file_from_google_drive(id, destination):
+    URL = "https://docs.google.com/uc?export=download"
+
+    session = requests.Session()
+
+    response = session.get(URL, params = { 'id' : id }, stream = True)
+    token = get_confirm_token(response)
+
+    print("Download is in progress.....")
+    if token:
+        params = { 'id' : id, 'confirm' : token }
+        response = session.get(URL, params = params, stream = True)
+
+    save_response_content(response, destination)
+    print("Download completed.") 
+
+def get_confirm_token(response):
+    for key, value in response.cookies.items():
+        if key.startswith('download_warning'):
+            return value
+
+    return None
+
+def save_response_content(response, destination):
+    CHUNK_SIZE = 32768
+
+    with open(destination, "wb") as f:
+        for chunk in response.iter_content(CHUNK_SIZE):
+            if chunk: # filter out keep-alive new chunks
+                f.write(chunk)
