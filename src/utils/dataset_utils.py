@@ -25,11 +25,11 @@ def download_files(synthetic_file_name, synthetic_file_id,
 		mask_landmarks_name, mask_landmarks_id):
 
 	if not os.path.exists(synthetic_path):
-	    os.makedirs(synthetic_path)
+		os.makedirs(synthetic_path)
 	if not os.path.exists(celeba_path):
-	    os.makedirs(celeba_path)
+		os.makedirs(celeba_path)
 	if not os.path.exists(landmarks_path):
-	    os.makedirs(landmarks_path)
+		os.makedirs(landmarks_path)
 
 
 	print("Download is in progress for synthetic data...")
@@ -42,20 +42,20 @@ def download_files(synthetic_file_name, synthetic_file_id,
 
 def unzip_files(synthetic_file_name, celeba_file_name, mask_landmarks_name):
 	print("Unzipping the tar file of synthetic data")
-    tar = tarfile.open(synthetic_path + synthetic_file_name, "r:gz")
-    tar.extractall(synthetic_path)
-    tar.close()
+	tar = tarfile.open(synthetic_path + synthetic_file_name, "r:gz")
+	tar.extractall(synthetic_path)
+	tar.close()
 
-    print("Unzipping the zip file of celeba data")
-    zip_celeba = zipfile.Zipfile(celeba_path + celeba_file_name, "r")
-    zip_celeba.extractall(celeba_path)
-    zip_celeba.close()
+	print("Unzipping the zip file of celeba data")
+	zip_celeba = zipfile.Zipfile(celeba_path + celeba_file_name, "r")
+	zip_celeba.extractall(celeba_path)
+	zip_celeba.close()
 
-    print("Unzipping the zip file of landmark weights")
-    zip_landmarks = zipfile.Zipfile(landmarks_path + mask_landmarks_name, "r")
-    zip_landmarks.extractall(landmarks_path)
-    zip_landmarks.close()
-    print("Unzip completed.")
+	print("Unzipping the zip file of landmark weights")
+	zip_landmarks = zipfile.Zipfile(landmarks_path + mask_landmarks_name, "r")
+	zip_landmarks.extractall(landmarks_path)
+	zip_landmarks.close()
+	print("Unzip completed.")
 
 def delete_zip_files(synthetic_file_name, celeba_file_name, mask_landmarks_name):
 	os.remove(synthetic_path + synthetic_file_name)
