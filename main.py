@@ -10,6 +10,8 @@ def main(args):
 
 	utils.generate_mask(args.skipnet_batch_size)
 
+	
+
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser()
 	parser.add_argument(
