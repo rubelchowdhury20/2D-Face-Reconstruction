@@ -33,7 +33,9 @@ def generate_mask(skipnet_batch_size):
 
 	for i, image_path in enumerate(list_img_full):
 
-		if(mask_count == (len(list_img_full) - (len(list_img_full) % skipnet_batch_size))):
+		# if(mask_count == (len(list_img_full) - (len(list_img_full) % skipnet_batch_size))):
+		# 	break
+		if(mask_count == 400):
 			break
 		# read image
 		image = io.imread(image_path)
