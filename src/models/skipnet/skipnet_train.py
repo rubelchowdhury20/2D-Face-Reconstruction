@@ -10,8 +10,8 @@ train_features, train_labels, test_features, test_labels = preprocess_data()
 
 def train(batch_size, learning_rate, epochs):
 	run_config=tf.estimator.RunConfig(
-		# model_dir="./models/latest/skipnet_checkpoints",
-		# save_checkpoints_steps=100,
+		model_dir="./models/latest/skipnet_checkpoints",
+		save_checkpoints_steps=100,
 		save_summary_steps=500)
 
 	estimator = create_estimator(run_config, batch_size, learning_rate)
