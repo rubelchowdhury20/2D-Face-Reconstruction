@@ -1,6 +1,8 @@
 import argparse
 
 from src import utils
+from src.models import skipnet
+
 
 def main(args):
 	# utils.load_dataset(
@@ -9,8 +11,9 @@ def main(args):
 	# 	args.mask_landmarks_name, args.mask_landmarks_id)
 
 	utils.generate_mask(args.skipnet_batch_size)
+	skipnet.train(args.skipnet_batch_size, args.skipnet_learning_rate, args.skipnet_epochs)
 
-	
+
 
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser()
@@ -48,7 +51,17 @@ if __name__ == '__main__':
 		"--skipnet_batch_size",
 		type=int,
 		default=10,
-		help="batch size"
+		help="Skipnet batch size"
 		)
+	parser.add_argument(
+		"--skipnet_learning_rate",
+		type=float,
+		default=0.00001,
+		help="Skipnet learning rate")
+	parser.add_argument(
+		"--skipnet_epochs",
+		type=int,
+		default=50,
+		help="Skipnet total epochs")
 
 	main(parser.parse_args())
