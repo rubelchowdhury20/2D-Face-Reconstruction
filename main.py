@@ -10,7 +10,7 @@ def main(args):
 	# 	args.celeba_file_name, args.celeba_file_id,
 	# 	args.mask_landmarks_name, args.mask_landmarks_id)
 
-	utils.generate_mask(args.skipnet_batch_size)
+	# utils.generate_mask(args.skipnet_batch_size)
 	skipnet.train(args.skipnet_batch_size, args.skipnet_learning_rate, args.skipnet_epochs)
 
 

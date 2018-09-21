@@ -1,2 +1,10 @@
 1. downloading the dataset only when different data id is there.
 2. installation of dlib along with cmake.
+
+
+
+
+
+
+requirements.txt
+dlib

@@ -8,23 +8,22 @@ def generate_syn_name_list():
 
 	# generating list for image, albedo, normal, lighting SH and mask in a similar order
 	for i in range(0,folder_count):
-	folder = str(i+1).zfill(4)
-	print(folder)
-	path = 'data/synthetic_data/DATA_pose_15/' + folder + '/'
-	addrs = os.walk(path)
-	for root, dirs, filename in addrs:
-		filename.sort() 
-		for file in filename:
-			if (file.endswith(".png") and 'face' in file):
-				image_list.append(os.path.join(root, file))       
-			elif (file.endswith(".png") and 'albedo' in file):
-				albedo_list.append(os.path.join(root, file))
-			elif (file.endswith(".png") and 'normal' in file):
-				normal_list.append(os.path.join(root, file))
-			elif (file.endswith(".png") and 'mask' in file):
-				mask_list.append(os.path.join(root, file))         
-			elif (file.endswith(".txt")):
-				light_list.append(os.path.join(root, file))
+		folder = str(i+1).zfill(4)
+		path = 'data/synthetic_data/DATA_pose_15/' + folder + '/'
+		addrs = os.walk(path)
+		for root, dirs, filename in addrs:
+			filename.sort() 
+			for file in filename:
+				if (file.endswith(".png") and 'face' in file):
+					image_list.append(os.path.join(root, file))       
+				elif (file.endswith(".png") and 'albedo' in file):
+					albedo_list.append(os.path.join(root, file))
+				elif (file.endswith(".png") and 'normal' in file):
+					normal_list.append(os.path.join(root, file))
+				elif (file.endswith(".png") and 'mask' in file):
+					mask_list.append(os.path.join(root, file))         
+				elif (file.endswith(".txt")):
+					light_list.append(os.path.join(root, file))
 
 	# converting list to numpy array 
 	image_list = np.asarray(image_list)
