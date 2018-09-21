@@ -2,7 +2,7 @@ import os
 import numpy as np
 import tensorflow as tf
 
-from skipnet_functions import *
+from .skipnet_functions import *
 
 def preprocess_data():
 	features, labels = generate_syn_name_list()
