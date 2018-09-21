@@ -5,12 +5,12 @@ from src.models import skipnet
 
 
 def main(args):
-	utils.load_dataset(
-		args.synthetic_file_name, args.synthetic_file_id,
-		args.celeba_file_name, args.celeba_file_id,
-		args.mask_landmarks_name, args.mask_landmarks_id)
+	# utils.load_dataset(
+	# 	args.synthetic_file_name, args.synthetic_file_id,
+	# 	args.celeba_file_name, args.celeba_file_id,
+	# 	args.mask_landmarks_name, args.mask_landmarks_id)
 
-	utils.generate_mask(args.skipnet_batch_size)
+	# utils.generate_mask(args.skipnet_batch_size)
 	skipnet.train(args.skipnet_batch_size, args.skipnet_learning_rate, args.skipnet_epochs)
 
 
