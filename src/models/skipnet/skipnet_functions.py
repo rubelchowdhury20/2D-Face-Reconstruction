@@ -336,7 +336,7 @@ def create_estimator(run_config, batch_size, learning_rate):
 
 	return estimator
 	
-def create_specs(batch_size, epochs):
+def create_specs(batch_size, epochs, train_features, train_labels, test_features, test_labels):
 	train_spec = tf.estimator.TrainSpec(
 		input_fn=lambda: input_fn(
 			train_features,

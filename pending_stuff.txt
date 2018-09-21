@@ -1,6 +1,7 @@
 1. downloading the dataset only when different data id is there.
 2. installation of dlib along with cmake.
-
+3. mask generation number( change from 400 to default value)
+4. figuring out how to download the data, only when the data is not available or a new data is there
 
 
 
