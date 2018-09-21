@@ -61,7 +61,7 @@ if __name__ == '__main__':
 	parser.add_argument(
 		"--skipnet_epochs",
 		type=int,
-		default=50,
+		default=10,
 		help="Skipnet total epochs")
 
 	main(parser.parse_args())
