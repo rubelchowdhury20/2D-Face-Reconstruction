@@ -1,3 +1,7 @@
+import os
+import numpy as np
+import tensorflow as tf
+
 def generate_syn_name_list():
 	image_list = []
 	normal_list = []
