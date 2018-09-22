@@ -1,5 +1,6 @@
 import tensorflow as tf
 
+from .skipnet_arch import *
 from .skipnet_functions import *
 
 def preprocess_data():
