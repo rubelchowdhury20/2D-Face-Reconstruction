@@ -3,7 +3,7 @@ import shutil
 import tensorflow as tf
 from scipy.misc.pilutil import imsave
 
-from .skipnet_functions import *
+from .skipnet_arch import *
 
 
 

@@ -1,6 +1,0 @@
-gdown
-opencv-python
-scikit-image
-cmake
-imutils
-dlib
