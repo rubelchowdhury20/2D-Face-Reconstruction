@@ -42,7 +42,7 @@ def save_predict_output(estimator, predict_input_fn):
 def predict(batch_size):
 	predict_input_fn = predict_input_fn(batch_size)
 	estimator = create_estimator(batch_size, learning_rate)
-	save_predict_output(estimator, predict_input_fn):
+	save_predict_output(estimator, predict_input_fn)
 
 
 
