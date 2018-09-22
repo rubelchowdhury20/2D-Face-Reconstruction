@@ -39,7 +39,7 @@ def save_predict_output(estimator, predict_input):
 			file.write(light_array)
 		image_count = image_count + 1
 
-def predict(batch_size):
+def predict(batch_size, learning_rate):
 	predict_input = predict_input_function(batch_size)
 	estimator = create_estimator(batch_size, learning_rate)
 	save_predict_output(estimator, predict_input)
