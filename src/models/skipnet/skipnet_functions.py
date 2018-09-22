@@ -1,6 +1,7 @@
 import os
 import numpy as np
 import tensorflow as tf
+from matplotlib import path
 
 def generate_syn_name_list():
 	image_list = []
@@ -323,8 +324,12 @@ def model_fn(features, labels, mode, params):
 					"normal_loss": tf.metrics.mean_squared_error(normal, normal_decoder_output),
 					"lighting_loss": tf.metrics.mean_squared_error(light, light_mlp_output)})
 
-def create_estimator(run_config, batch_size, learning_rate):
+def create_estimator(batch_size, learning_rate):
 	"""Creates an Experiment configuration based on the estimator and input fn."""
+	run_config=tf.estimator.RunConfig(
+		model_dir="./models/latest/skipnet_checkpoints",
+		save_checkpoints_steps=100,
+		save_summary_steps=500)
 	model_params = tf.contrib.training.HParams(
 		batch_size = batch_size,
 		learning_rate = learning_rate)
@@ -357,3 +362,23 @@ def create_specs(batch_size, epochs, train_features, train_labels, test_features
 		throttle_secs=200)
 
 	return train_spec, eval_spec
+
+def generate_celeba_name_list():
+	# Listing the path for all the celeba mask images
+	celeba_mask_path = "data/celeba_data/celeba_mask"
+	celeba_mask_list = [os.path.join(celeba_mask_path, f) for f in os.listdir(celeba_mask_path)]
+	# Listing the path for all the celeba images which has mask
+	celeba_list = []
+	for i in celeba_mask_list:
+		celeba_list.append(i.replace("celeba_mask","img_align_celeba"))
+	celeba_features = np.transpose(np.asarray([celeba_list, celeba_mask_list]))
+	return celeba_features
+
+def predict_input_funtion(batch_size):
+	celeba_features = generate_celeba_name_list()
+	predict_input_fn = lambda: input_fn(
+		celeba_features,
+		perform_shuffle=False,
+		batch_size=batch_size)
+	return predict_input_fn
+

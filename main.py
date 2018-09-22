@@ -11,7 +11,8 @@ def main(args):
 	# 	args.mask_landmarks_name, args.mask_landmarks_id)
 
 	# utils.generate_mask(args.skipnet_batch_size)
-	skipnet.train(args.skipnet_batch_size, args.skipnet_learning_rate, args.skipnet_epochs)
+	# skipnet.train(args.skipnet_batch_size, args.skipnet_learning_rate, args.skipnet_epochs)
+	skipnet.predict(args.skipnet_batch_size)
 
 
 
@@ -51,8 +52,7 @@ if __name__ == '__main__':
 		"--skipnet_batch_size",
 		type=int,
 		default=10,
-		help="Skipnet batch size"
-		)
+		help="Skipnet batch size")
 	parser.add_argument(
 		"--skipnet_learning_rate",
 		type=float,
