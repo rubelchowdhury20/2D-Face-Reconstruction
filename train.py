@@ -29,3 +29,5 @@ if __name__ == '__train__':
 		help="Skipnet total epochs")
 
 	main(parser.parse_args())
+
+print(__name__)
