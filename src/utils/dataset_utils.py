@@ -8,29 +8,25 @@ synthetic_path = "./data/synthetic_data/"
 celeba_path = "./data/celeba_data/"
 landmarks_path = "./data/landmarks/"
 
+synthetic_file_name = "Syn_data.tar.gz"
+synthetic_file_id = "18YVh0idJ9tNgrYluDJqsE3oY_dWVIJBE"
+celeba_file_name = "img_align_celeba.zip"
+celeba_file_id = "0B7EVK8r0v71pZjFTYXZWM3FlRnM"
+mask_landmarks_name = "shape_predictor_68_face_landmarks.dat"
+mask_landmarks_id = "1NjkXxViYxZF1-xB_3mfrTEyKTYqLea8s"
 
-def load_dataset(synthetic_file_name, synthetic_file_id,
-		celeba_file_name, celeba_file_id,
-		mask_landmarks_name, mask_landmarks_id):
-	
-	download_files(synthetic_file_name, synthetic_file_id,
-		celeba_file_name, celeba_file_id,
-		mask_landmarks_name, mask_landmarks_id)
-	unzip_files(synthetic_file_name, celeba_file_name, mask_landmarks_name)
-	delete_zip_files(synthetic_file_name, celeba_file_name, mask_landmarks_name)
+def load_dataset():
+	download_files()
+	unzip_files()
+	delete_zip_files()
 
-def download_files(synthetic_file_name, synthetic_file_id,
-		celeba_file_name, celeba_file_id,
-		mask_landmarks_name, mask_landmarks_id):
-
+def download_files():
 	if not os.path.exists(synthetic_path):
 		os.makedirs(synthetic_path)
 	if not os.path.exists(celeba_path):
 		os.makedirs(celeba_path)
 	if not os.path.exists(landmarks_path):
 		os.makedirs(landmarks_path)
-
-
 	print("Download is in progress for synthetic data...")
 	download_file_from_google_drive(synthetic_file_id, synthetic_path + synthetic_file_name)
 	print("Download is in progress for celeba data...")
@@ -39,18 +35,17 @@ def download_files(synthetic_file_name, synthetic_file_id,
 	download_file_from_google_drive(mask_landmarks_id, landmarks_path + mask_landmarks_name)
 	print("Donwload completed.")
 
-def unzip_files(synthetic_file_name, celeba_file_name, mask_landmarks_name):
+def unzip_files():
 	print("Unzipping the tar file of synthetic data")
 	tar = tarfile.open(synthetic_path + synthetic_file_name, "r:gz")
 	tar.extractall(synthetic_path)
 	tar.close()
-
 	print("Unzipping the zip file of celeba data")
 	zip_celeba = zipfile.ZipFile(celeba_path + celeba_file_name, "r")
 	zip_celeba.extractall(celeba_path)
 	zip_celeba.close()
 
-def delete_zip_files(synthetic_file_name, celeba_file_name, mask_landmarks_name):
+def delete_zip_files():
 	os.remove(synthetic_path + synthetic_file_name)
 	os.remove(celeba_path + celeba_file_name)
 

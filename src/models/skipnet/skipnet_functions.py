@@ -371,8 +371,6 @@ def generate_celeba_name_list():
 	celeba_list = []
 	for i in celeba_mask_list:
 		celeba_list.append(i.replace("celeba_mask","img_align_celeba"))
-	print(len(celeba_mask_list))
-	print(len(celeba_list))
 	celeba_features = np.transpose(np.asarray([celeba_list, celeba_mask_list]))
 	return celeba_features
 

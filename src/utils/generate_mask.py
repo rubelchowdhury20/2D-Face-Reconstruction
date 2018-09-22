@@ -61,8 +61,6 @@ def generate_mask(skipnet_batch_size):
 		# detect faces in the grayscale image
 		rects = detector(gray, 1)
 		mask_exists = False
-		print(mask_count)
-		print("..............")
 		# loop over the face detections
 		for (i, rect) in enumerate(rects[0:1]):
 			mask_count+=1
