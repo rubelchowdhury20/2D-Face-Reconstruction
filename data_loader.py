@@ -3,7 +3,6 @@ import argparse
 from src import utils
 
 def main(args):
-	print("hello")
 	utils.load_dataset()
 	utils.generate_mask(args.skipnet_batch_size)
 

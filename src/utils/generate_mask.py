@@ -86,6 +86,6 @@ def generate_mask(skipnet_batch_size):
 			cv2.imwrite(os.path.join(save_folder, name), out_face)
 			mask_exists = True
 		if mask_exists == False :
-			mask_count-=1
+			# mask_count-=1
 			shutil.move(image_path, nomask_folder + "/" + name)		#create
 			print("Mask is not created for "+name+". Image is moved out!")
