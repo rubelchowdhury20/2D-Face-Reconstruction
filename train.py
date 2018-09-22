@@ -10,7 +10,7 @@ def main(args):
 
 
 
-if __name__ == '__train__':
+if __name__ == '__main__':
 	parser = argparse.ArgumentParser()
 	parser.add_argument(
 		"--skipnet_batch_size",
@@ -29,5 +29,3 @@ if __name__ == '__train__':
 		help="Skipnet total epochs")
 
 	main(parser.parse_args())
-
-print(__name__)
