@@ -21,3 +21,5 @@ if __name__ == '__data_loader__':
 
 
 	main(parser.parse_args())
+
+print(__name__)
