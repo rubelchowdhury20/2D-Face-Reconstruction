@@ -25,13 +25,13 @@ def generate_mask(skipnet_batch_size):
 	if not os.path.exists(save_folder):
 		os.mkdir(save_folder)
 	else:
-		os.remove(save_folder)
+		os.rmdir(save_folder)
 		os.mkdir(save_folder)
 
 	if not os.path.exists(nomask_folder):
 		os.mkdir(nomask_folder)
 	else:
-		os.remove(nomask_folder)
+		os.rmdir(nomask_folder)
 		os.mkdir(nomask_folder)
 		
 	mask_count = 0

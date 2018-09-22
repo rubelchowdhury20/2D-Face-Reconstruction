@@ -16,7 +16,7 @@ def save_predict_output(estimator, predict_input):
 	if not os.path.exists(predicted_images_path):
 		os.makedirs(predicted_images_path)
 	else:
-		os.remove(predicted_images_path)
+		os.rmdir(predicted_images_path)
 		os.makedirs(predicted_images_path)
 
 
