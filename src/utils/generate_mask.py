@@ -65,7 +65,7 @@ def generate_mask(skipnet_batch_size):
 		mask_exists = False
 		
 		# loop over the face detections
-		for (i, rect) in enumerate(rects):
+		for (i, rect) in enumerate(rects[0:1]):
 			mask_count+=1
 			"""
 			Determine the facial landmarks for the face region, then convert the facial landmark (x, y)-coordinates to a NumPy array
@@ -82,7 +82,9 @@ def generate_mask(skipnet_batch_size):
 			remapped_shape = face_remap(shape)
 			cv2.fillConvexPoly(feature_mask, remapped_shape[0:27], 1)
 			feature_mask = feature_mask.astype(np.bool)
-			print(feature_mask)
+			print(feature_mask.shape)
+			print(out_face.shape)
+			print(gray.shape)
 			print("----------------")
 			out_face[feature_mask] = gray[feature_mask]
 			out_face = out_face * 255
