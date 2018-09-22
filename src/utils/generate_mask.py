@@ -66,28 +66,28 @@ def generate_mask(skipnet_batch_size):
 		# loop over the face detections
 		for (i, rect) in enumerate(rects):
 			mask_count+=1
-		"""
-		Determine the facial landmarks for the face region, then convert the facial landmark (x, y)-coordinates to a NumPy array
-		"""
-		shape = predictor(gray, rect)
-		shape = face_utils.shape_to_np(shape)
+			"""
+			Determine the facial landmarks for the face region, then convert the facial landmark (x, y)-coordinates to a NumPy array
+			"""
+			shape = predictor(gray, rect)
+			shape = face_utils.shape_to_np(shape)
 
-		#initialize mask array
-		remapped_shape = np.zeros_like(shape)
+			#initialize mask array
+			remapped_shape = np.zeros_like(shape)
 
-		feature_mask = np.zeros((image.shape[0], image.shape[1]))
+			feature_mask = np.zeros((image.shape[0], image.shape[1]))
 
-		# we extract the face
-		remapped_shape = face_remap(shape)
-		cv2.fillConvexPoly(feature_mask, remapped_shape[0:27], 1)
-		feature_mask = feature_mask.astype(np.bool)
-		out_face[feature_mask] = gray[feature_mask]
-		out_face = out_face * 255
-		out_face = out_face.reshape(out_face.shape[0], out_face.shape[1], 1)
-		out_face = np.tile(out_face, (1, 1, 3))
-		cv2.imwrite(os.path.join(save_folder, name), out_face)
-		mask_exists = True
-	if mask_exists == False :
-		mask_count-=1
-		shutil.move(image_path, nomask_folder + "/" + name)		#create
-		print("Mask is not created for "+name+". Image is moved out!")
+			# we extract the face
+			remapped_shape = face_remap(shape)
+			cv2.fillConvexPoly(feature_mask, remapped_shape[0:27], 1)
+			feature_mask = feature_mask.astype(np.bool)
+			out_face[feature_mask] = gray[feature_mask]
+			out_face = out_face * 255
+			out_face = out_face.reshape(out_face.shape[0], out_face.shape[1], 1)
+			out_face = np.tile(out_face, (1, 1, 3))
+			cv2.imwrite(os.path.join(save_folder, name), out_face)
+			mask_exists = True
+		if mask_exists == False :
+			mask_count-=1
+			shutil.move(image_path, nomask_folder + "/" + name)		#create
+			print("Mask is not created for "+name+". Image is moved out!")
