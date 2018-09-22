@@ -144,7 +144,7 @@ def train_validation_split(features, labels):
     train_features = np.transpose(features[:train_max_index])
     train_labels = np.transpose(labels[:train_max_index])
     test_features = np.transpose(features[test_min_index:])
-    test_labels = np.transpose(features[test_min_index:])
+    test_labels = np.transpose(labels[test_min_index:])
 
     train_data = {'features':train_features, 'labels':train_labels}
     test_data = {'features':test_features, 'labels':test_labels}
