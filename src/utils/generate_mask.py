@@ -38,7 +38,7 @@ def generate_mask(skipnet_batch_size):
 	list_img_full=listdir_fullpath('data/celeba_data/img_align_celeba/') 
 
 	for i, image_path in enumerate(list_img_full):
-
+		print(image_path)
 		# if(mask_count == (len(list_img_full) - (len(list_img_full) % skipnet_batch_size))):
 		# 	break
 		if(mask_count == 100):
@@ -54,6 +54,7 @@ def generate_mask(skipnet_batch_size):
 	  
 
 		out_face = np.zeros((image.shape[0], image.shape[1]))
+		print(out_face.shape)
 		SHAPE_PREDICTOR = 'data/landmarks/shape_predictor_68_face_landmarks.dat'
 		# initialize dlib's face detector (HOG-based) and then create the facial landmark predictor
 		detector = dlib.get_frontal_face_detector()
@@ -81,6 +82,8 @@ def generate_mask(skipnet_batch_size):
 			remapped_shape = face_remap(shape)
 			cv2.fillConvexPoly(feature_mask, remapped_shape[0:27], 1)
 			feature_mask = feature_mask.astype(np.bool)
+			print(feature_mask)
+			print("----------------")
 			out_face[feature_mask] = gray[feature_mask]
 			out_face = out_face * 255
 			out_face = out_face.reshape(out_face.shape[0], out_face.shape[1], 1)
