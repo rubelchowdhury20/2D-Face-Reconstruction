@@ -1,4 +1,5 @@
 import os
+import shutil
 import tensorflow as tf
 from scipy.misc.pilutil import imsave
 
@@ -16,7 +17,7 @@ def save_predict_output(estimator, predict_input):
 	if not os.path.exists(predicted_images_path):
 		os.makedirs(predicted_images_path)
 	else:
-		os.rmdir(predicted_images_path)
+		shutil.rmtree(predicted_images_path)
 		os.makedirs(predicted_images_path)
 
 
