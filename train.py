@@ -4,7 +4,6 @@ from src import utils
 from src.models import skipnet
 from src.models import sfsnet
 
-
 def main(args):
 	skipnet.train(args.skipnet_batch_size, args.skipnet_learning_rate, args.skipnet_epochs)
 	skipnet.predict(args.skipnet_batch_size, args.skipnet_learning_rate)
