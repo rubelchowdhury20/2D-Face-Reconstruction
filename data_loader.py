@@ -3,6 +3,7 @@ import argparse
 from src import utils
 
 def main(args):
+	print("hello")
 	utils.load_dataset(
 		args.synthetic_file_name, args.synthetic_file_id,
 		args.celeba_file_name, args.celeba_file_id,
