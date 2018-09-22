@@ -10,7 +10,7 @@ def save_predict_output(estimator, predict_input):
 	folder_count_celeba = 0
 	image_count = 0
 	images_in_folder = 300
-	predicted_images_path = "data/skipnet_inference"
+	predicted_images_path = "data/skipnet_inference/"
 	current_folder_path = ""
 
 	if not os.path.exists(predicted_images_path):

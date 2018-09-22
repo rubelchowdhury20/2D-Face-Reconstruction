@@ -24,8 +24,14 @@ def generate_mask(skipnet_batch_size):
 	
 	if not os.path.exists(save_folder):
 		os.mkdir(save_folder)
+	else:
+		os.remove(save_folder)
+		os.mkdir(save_folder)
 
 	if not os.path.exists(nomask_folder):
+		os.mkdir(nomask_folder)
+	else:
+		os.remove(nomask_folder)
 		os.mkdir(nomask_folder)
 		
 	mask_count = 0
@@ -35,7 +41,7 @@ def generate_mask(skipnet_batch_size):
 
 		# if(mask_count == (len(list_img_full) - (len(list_img_full) % skipnet_batch_size))):
 		# 	break
-		if(mask_count == 400):
+		if(mask_count == 100):
 			break
 		# read image
 		image = io.imread(image_path)
@@ -81,7 +87,7 @@ def generate_mask(skipnet_batch_size):
 		out_face = np.tile(out_face, (1, 1, 3))
 		cv2.imwrite(os.path.join(save_folder, name), out_face)
 		mask_exists = True
-		if mask_exists == False :
-			mask_count-=1
-			shutil.move(image_path, nomask_folder + "/" + name)		#create
-			print("Mask is not created for "+name+". Image is moved out!")
+	if mask_exists == False :
+		mask_count-=1
+		shutil.move(image_path, nomask_folder + "/" + name)		#create
+		print("Mask is not created for "+name+". Image is moved out!")
