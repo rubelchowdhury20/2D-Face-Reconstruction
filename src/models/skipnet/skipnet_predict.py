@@ -6,7 +6,7 @@ from .skipnet_functions import *
 
 
 
-def save_predict_output(estimator, predict_input_fn):
+def save_predict_output(estimator, predict_input):
 	folder_count_celeba = 0
 	image_count = 0
 	images_in_folder = 300
@@ -20,7 +20,7 @@ def save_predict_output(estimator, predict_input_fn):
 		os.makedirs(predicted_images_path)
 
 
-	for i in estimator.predict(input_fn=predict_input_fn):
+	for i in estimator.predict(input_fn=predict_input):
 		if(image_count % images_in_folder == 0):
 			folder_count_celeba = folder_count_celeba + 1
 			current_folder_path = predicted_images_path + '/' + str(folder_count_celeba).zfill(4)
@@ -40,9 +40,9 @@ def save_predict_output(estimator, predict_input_fn):
 		image_count = image_count + 1
 
 def predict(batch_size):
-	predict_input_fn = predict_input_fn(batch_size)
+	predict_input = predict_input_function(batch_size)
 	estimator = create_estimator(batch_size, learning_rate)
-	save_predict_output(estimator, predict_input_fn)
+	save_predict_output(estimator, predict_input)
 
 
 

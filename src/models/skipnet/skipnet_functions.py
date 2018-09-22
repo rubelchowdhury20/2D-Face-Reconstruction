@@ -374,7 +374,7 @@ def generate_celeba_name_list():
 	celeba_features = np.transpose(np.asarray([celeba_list, celeba_mask_list]))
 	return celeba_features
 
-def predict_input_funtion(batch_size):
+def predict_input_function(batch_size):
 	celeba_features = generate_celeba_name_list()
 	predict_input_fn = lambda: input_fn(
 		celeba_features,
