@@ -2,6 +2,10 @@
 2. installation of dlib along with cmake.
 3. mask generation number( change from 400 to default value)
 4. figuring out how to download the data, only when the data is not available or a new data is there
+5. Tensorboard logging
+6. Purge.sh
+7. Testing from scratch using just git clone
+
 
 
 
