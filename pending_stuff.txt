@@ -2,6 +2,13 @@
 2. installation of dlib along with cmake.
 3. mask generation number( change from 400 to default value)
 4. figuring out how to download the data, only when the data is not available or a new data is there
+5. Tensorboard logging
+6. Purge.sh
+7. Testing from scratch using just git clone
+8. hyperparameters for training and prediction
+9. generating mask and prediction on sfsnet taking the images from a folder.
+10. Running tensorflow logging as a background process
+11. Getting images to work in tensorboard.
 
 
 

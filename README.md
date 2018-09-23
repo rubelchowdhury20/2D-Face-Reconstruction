@@ -10,7 +10,25 @@ Please refer the [Project Page](https://senguptaumd.github.io/SfSNet/) and the [
 ## Installation and Usage
 
 ### Requirements
-All the requirements can be found in the requirements.txt above. To install all the required dependencies use,
+All the requirements can be found in the environment.yml file above. To install all the required dependencies and setup the environment to use,
 ```
-pip install -r requirements.txt
+conda env create -f environment.yml
+source activate 3dface
 ```
+### Data Loader
+After the environment is setup, we require the datasets to be loaded, for the various training and testing steps. This data download and preparation can be done by,
+```
+python data_loader.py --skipnet_batch_size 10
+```
+
+Alternately, we can just run the ```setup.sh``` file to the same effect. Once the setup.sh file is run, the entire setup is complete. 
+
+### Training
+In order to train the network we can simply run the ```run.sh``` file. This considers a set of default training parameters. The values can be changed to suit requirements using the training help. Training help can be found by running, 
+```
+python train.py --help
+```
+
+### Testing
+To be added(After Training Complete)
+

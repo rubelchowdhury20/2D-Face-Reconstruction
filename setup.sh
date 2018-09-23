@@ -1,3 +1,4 @@
+bash Miniconda3-latest-Linux-x86_64.sh
 conda env create -f environment.yml
 source activate 3dface
 
