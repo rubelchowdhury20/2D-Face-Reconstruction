@@ -136,15 +136,23 @@ def generate_list():
 
     return features, labels
 
-def train_validation_split(features, labels):
+def train_validation_split(features, labels, batch_size):
     n_total = features.shape[0]
+    train_min_index = int(n_total * 0)
     train_max_index = int(n_total * 0.8)
     test_min_index = int((n_total * 0.8))
+    test_max_index = int(n_total * 1)
+
+    train_max_index = train_max_index - (train_max_index % batch_size)
+
+    n_test = test_max_index - test_min_index
+    test_max_index = test_max_index - (n_test % batch_size)
+
 
     train_features = np.transpose(features[:train_max_index])
     train_labels = np.transpose(labels[:train_max_index])
-    test_features = np.transpose(features[test_min_index:])
-    test_labels = np.transpose(labels[test_min_index:])
+    test_features = np.transpose(features[test_min_index:test_max_index])
+    test_labels = np.transpose(labels[test_min_index:test_max_index])
 
     train_data = {'features':train_features, 'labels':train_labels}
     test_data = {'features':test_features, 'labels':test_labels}

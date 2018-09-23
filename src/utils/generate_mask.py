@@ -16,7 +16,7 @@ def face_remap(shape):
   remapped_image = cv2.convexHull(shape)
   return remapped_image
 
-def generate_mask(skipnet_batch_size):
+def generate_mask():
 
 	image_folder = 'data/celeba_data/img_align_celeba/'
 	save_folder = 'data/celeba_data/celeba_mask/'
@@ -38,7 +38,7 @@ def generate_mask(skipnet_batch_size):
 	list_img_full=listdir_fullpath('data/celeba_data/img_align_celeba/') 
 
 	for i, image_path in enumerate(list_img_full):
-		# if(mask_count == (len(list_img_full) - (len(list_img_full) % skipnet_batch_size))):
+		# if(mask_count == len(list_img_full)):
 		# 	break
 		if(mask_count == 100):
 			break

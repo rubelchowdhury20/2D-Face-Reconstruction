@@ -7,7 +7,7 @@ from src.models import sfsnet
 def main(args):
 	skipnet.train(args.skipnet_batch_size, args.skipnet_learning_rate, args.skipnet_epochs)
 	skipnet.predict(args.skipnet_batch_size, args.skipnet_learning_rate)
-	#sfsnet.train(args.sfsnet_batch_size, args.sfsnet_learning_rate, args.sfsnet_epochs)
+	sfsnet.train(args.sfsnet_batch_size, args.sfsnet_learning_rate, args.sfsnet_epochs)
 	#sfsnet.predict(args.sfsnet_batch_size, args.sfsnet_learning_rate) # first argument is test data
 
 if __name__ == '__main__':
@@ -15,7 +15,7 @@ if __name__ == '__main__':
 	parser.add_argument(
 		"--skipnet_batch_size",
 		type=int,
-		default=10,
+		default=50,
 		help="Skipnet batch size")
 	parser.add_argument(
 		"--skipnet_learning_rate",
@@ -25,12 +25,12 @@ if __name__ == '__main__':
 	parser.add_argument(
 		"--skipnet_epochs",
 		type=int,
-		default=10,
+		default=50,
 		help="Skipnet total epochs")
 	parser.add_argument(
 		"--sfsnet_batch_size",
 		type=int,
-		default=10,
+		default=50,
 		help="sfsnet batch size")
 	parser.add_argument(
 		"--sfsnet_learning_rate",
@@ -40,7 +40,7 @@ if __name__ == '__main__':
 	parser.add_argument(
 		"--sfsnet_epochs",
 		type=int,
-		default=10,
+		default=50,
 		help="sfsnet total epochs")
 
 	main(parser.parse_args())
