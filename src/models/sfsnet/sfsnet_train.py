@@ -5,9 +5,9 @@ from sfsnet_functions import *
 
 def preprocess_data():
     features, labels = generate_list()
-    train_features, train_labels, test_features, test_labels = train_validation_split(features, labels)
+    train_data, test_data = train_validation_split(features, labels)
 
-    return train_features, train_labels, test_features, test_labels
+    return train_data, test_data
 
 def train(batch_size, learning_rate, epochs):
     estimator, train_spec, eval_spec = create_estimator_and_specs(run_config=tf.estimator.RunConfig(
