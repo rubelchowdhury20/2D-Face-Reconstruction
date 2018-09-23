@@ -43,4 +43,4 @@ def save_predict_output(estimator, predict_input):
 
 def predict(test_data, batch_size, learning_rate):
 	predict_input = predict_input_function(lambda: input_fn(test_data, batch_size=batch_size))
-    predictions = list(estimator.predict(input_fn=predict_input_fn))
+	predictions = list(estimator.predict(input_fn=predict_input_fn))

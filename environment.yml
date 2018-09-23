@@ -11,6 +11,6 @@ dependencies:
   - requests=2.19.1=py36_0
   - numpy=1.14.5
   - setuptools=39.1.0
-  - tensorflow-gpu=1.10.0=mkl_py36hdb377fd_0
+  - tensorflow-gpu=1.10.0
   - pip:
     - imutils==0.5.1

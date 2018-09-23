@@ -38,10 +38,10 @@ def generate_mask():
 	list_img_full=listdir_fullpath('data/celeba_data/img_align_celeba/') 
 
 	for i, image_path in enumerate(list_img_full):
-		# if(mask_count == len(list_img_full)):
-		# 	break
-		if(mask_count == 100):
+		if(mask_count == len(list_img_full)):
 			break
+		# if(mask_count == 100):
+		# 	break
 		# read image
 		image = io.imread(image_path)
 		

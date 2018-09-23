@@ -1,7 +1,7 @@
 import tensorflow as tf
 import numpy as np
-from sfsnet_arch import *
-from sfsnet_functions import *
+from .sfsnet_arch import *
+from .sfsnet_functions import *
 
 def preprocess_data(batch_size):
 
