@@ -8,10 +8,7 @@ def generate_syn_name_list():
 	albedo_list = []
 	mask_list = []
 	light_list = []
-	if os.path.exists('data/synthetic_data/DATA_pose_15/'):
-		folder_count = len(next(os.walk('data/synthetic_data/DATA_pose_15/'))[1])
-	else:
-		folder_count = 10
+	folder_count = len(next(os.walk('data/synthetic_data/DATA_pose_15/'))[1])
 
 	# generating list for image, albedo, normal, lighting SH and mask in a similar order
 	for i in range(0,folder_count):

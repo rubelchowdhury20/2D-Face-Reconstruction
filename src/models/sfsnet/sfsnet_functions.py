@@ -11,19 +11,16 @@ def generate_list():
     celebA_mask_list = []
     celebA_light_list = []
 
-    if os.path.exists('/data/predicted_data_skipnet/'):
-
-        folder_count = len(os.listdir('/data/predicted_data_skipnet/'))
-    
+    if os.path.exists('/data/skipnet_inference/'):
+        folder_count = len(os.listdir('/data/skipnet_inference/'))
     else:
-
-        folder_count = 10
+        folder_count = 0
 
     # generating list for image, albedo, normal, lighting SH and mask in a similar order
     for i in range(0,folder_count):
         folder = str(i+1).zfill(4) # remove if not required
         print(folder)
-        path = os.path.join('/data/predicted_data_skipnet/',folder)  # Need to change the path based on actual structure
+        path = os.path.join('/data/skipnet_inference/',folder)  # Need to change the path based on actual structure
         print(path)
         for root, _, filename in os.walk(path):
             filename.sort() 
@@ -44,10 +41,7 @@ def generate_list():
     albedo_list = []
     mask_list = []
     light_list = []
-    if os.path.exists('data/synthetic_data/DATA_pose_15/'):
-        folder_count = len(next(os.walk('data/synthetic_data/DATA_pose_15/'))[1])
-    else:
-        folder_count = 10
+    folder_count = len(next(os.walk('data/synthetic_data/DATA_pose_15/'))[1])
 
     # generating list for image, albedo, normal, lighting SH and mask in a similar order
     for i in range(0,folder_count):
