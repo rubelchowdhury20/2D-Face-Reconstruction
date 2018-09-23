@@ -32,3 +32,15 @@ python train.py --help
 ### Testing
 To be added(After Training Complete)
 
+
+## Uninstallation
+
+In order to purge the entire conda env and restart with this repo from the beginning please run,
+```
+purge.sh
+```
+In order to just temporarily stop the environment and continue from the same point at a later stage we can instead use,
+```
+source deactivate 3dface
+```
+
