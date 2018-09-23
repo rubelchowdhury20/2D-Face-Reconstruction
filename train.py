@@ -1,4 +1,4 @@
-import argparses
+import argparse
 
 from src import utils
 from src.models import skipnet

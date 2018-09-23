@@ -3,8 +3,8 @@ import os
 from scipy.misc.pilutil import imsave
 import tensorflow as tf
 import numpy as np
-from sfsnet_arch import *
-from sfsnet_functions import *
+from .sfsnet_arch import *
+from .sfsnet_functions import *
 
 
 def save_predict_output(estimator, predict_input):
@@ -42,5 +42,5 @@ def save_predict_output(estimator, predict_input):
 
 
 def predict(test_data, batch_size, learning_rate):
-	predict_input = predict_input_function(lambda: input_fn(test_data, batch_size=batch_size)
+	predict_input = predict_input_function(lambda: input_fn(test_data, batch_size=batch_size))
     predictions = list(estimator.predict(input_fn=predict_input_fn))

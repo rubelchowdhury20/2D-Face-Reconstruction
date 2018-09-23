@@ -442,7 +442,7 @@ def model_fn(features, labels, mode, params):
     return predicted_estimator
 
 
-def create_estimator_and_specs(run_config, train_data, test_data, sfsnet_batch_size, sfsnet_learning_rate, sfsnet_epochs):
+def create_estimator_and_specs(train_data, test_data, sfsnet_batch_size, sfsnet_learning_rate, sfsnet_epochs, run_config):
     # Creates a trial configuration based on the estimator and input fn.
     model_params = tf.contrib.training.HParams(batch_size = sfsnet_batch_size, learning_rate = sfsnet_learning_rate)
 

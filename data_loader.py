@@ -2,7 +2,7 @@ import argparse
 
 from src import utils
 
-def main(args):
+def main():
 	utils.load_dataset()
 	utils.generate_mask()
 

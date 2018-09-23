@@ -1,6 +1,5 @@
 import os 
 import numpy as np
-from skipnet.skipnet_functions import * # TODO
 
 def generate_list():
     # Function for the generation of image paths for training

@@ -4,6 +4,10 @@ rm ~/miniconda.sh
 
 conda env create -f environment.yml
 source activate 3dface
+pip install opencv-contrib-python
+apt-get update
+apt-get upgrade
+apt install -y libsm6 libxext6
 
 mkdir -p ./models/latest/ 
 sudo mkdir -p /tmp/SFSNet/checkpoints/skipnet_checkpoints

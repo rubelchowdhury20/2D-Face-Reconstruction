@@ -9,7 +9,7 @@ def generate_syn_name_list():
 	mask_list = []
 	light_list = []
 	folder_count = len(next(os.walk('data/synthetic_data/DATA_pose_15/'))[1])
-
+	print(folder_count)
 	# generating list for image, albedo, normal, lighting SH and mask in a similar order
 	for i in range(0,folder_count):
 		folder = str(i+1).zfill(4)
