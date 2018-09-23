@@ -5,8 +5,8 @@
 5. Tensorboard logging
 6. Purge.sh
 7. Testing from scratch using just git clone
-
-
+8. hyperparameters for training and prediction
+9. generating mask and prediction on sfsnet taking the images from a folder.
 
 
 
