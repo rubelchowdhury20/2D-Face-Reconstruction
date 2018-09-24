@@ -9,7 +9,7 @@ celeba_path = "./data/celeba_data/"
 landmarks_path = "./data/landmarks/"
 
 synthetic_file_name = "Syn_data.tar.gz"
-synthetic_file_id = "18YVh0idJ9tNgrYluDJqsE3oY_dWVIJBE"
+synthetic_file_id = "1UQONt9Usk3PKztSIoXeNUEUqD5s6z69e"
 celeba_file_name = "img_align_celeba.zip"
 celeba_file_id = "0B7EVK8r0v71pZjFTYXZWM3FlRnM"
 mask_landmarks_name = "shape_predictor_68_face_landmarks.dat"
