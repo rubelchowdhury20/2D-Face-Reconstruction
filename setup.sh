@@ -3,20 +3,20 @@
 #rm ~/miniconda.sh
 
 
-sudo -s
+#sudo -s
 # The above command will prompt password entry.
 
 export PATH=/root/miniconda/bin/:$PATH
 
 conda env create -f environment.yml
 source activate 3dface
-pip install opencv-contrib-python
-apt-get -y update
-apt-get -y upgrade
-apt install -y libsm6 libxext6 libxrender1
+sudo pip install opencv-contrib-python
+sudo apt-get -y update
+sudo apt-get -y upgrade
+sudo apt install -y libsm6 libxext6 libxrender1
 
 mkdir -p ./models/latest/ 
-mkdir -p /tmp/SFSNet/checkpoints/skipnet_checkpoints
-mkdir -p /tmp/SFSNet/checkpoints/sfsnet_checkpoints
+sudo mkdir -p /tmp/SFSNet/checkpoints/skipnet_checkpoints
+sudo mkdir -p /tmp/SFSNet/checkpoints/sfsnet_checkpoints
 
 python data_loader.py
