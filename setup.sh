@@ -10,13 +10,13 @@ export PATH=/root/miniconda/bin/:$PATH
 
 conda env create -f environment.yml
 source activate 3dface
-sudo pip install opencv-contrib-python
-sudo apt-get -y update
-sudo apt-get -y upgrade
-sudo apt install -y libsm6 libxext6 libxrender1
+pip install opencv-contrib-python
+apt-get -y update
+apt-get -y upgrade
+apt install -y libsm6 libxext6 libxrender1
 
 mkdir -p ./models/latest/ 
-sudo mkdir -p /tmp/SFSNet/checkpoints/skipnet_checkpoints
-sudo mkdir -p /tmp/SFSNet/checkpoints/sfsnet_checkpoints
+mkdir -p /tmp/SFSNet/checkpoints/skipnet_checkpoints
+mkdir -p /tmp/SFSNet/checkpoints/sfsnet_checkpoints
 
 python data_loader.py
