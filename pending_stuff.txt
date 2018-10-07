@@ -8,11 +8,8 @@
 8. hyperparameters for training and prediction
 9. generating mask and prediction on sfsnet taking the images from a folder.
 10. Running tensorflow logging as a background process
-11. Getting images to work in tensorboard.
+11. Getting images to work in tensorboard
 
 
 
 
-
-requirements.txt
-dlib
