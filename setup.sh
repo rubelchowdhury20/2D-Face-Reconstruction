@@ -11,6 +11,13 @@ apt-get -y update
 apt-get -y upgrade
 apt install -y libsm6 libxext6 libxrender1
 
+# Installing dlib from github
+git clone https://github.com/davisking/dlib.git
+apt install -y cmake
+cd dlib
+!python setup.py install
+cd ./..
+
 mkdir -p ./models/latest/ 
 mkdir -p /tmp/SFSNet/checkpoints/skipnet_checkpoints
 mkdir -p /tmp/SFSNet/checkpoints/sfsnet_checkpoints
