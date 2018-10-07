@@ -19,7 +19,7 @@ apt install -y libsm6 libxext6 libxrender1
 git clone https://github.com/davisking/dlib.git
 apt install -y cmake
 cd dlib
-!python setup.py install
+python setup.py install
 cd ./..
 
 mkdir -p ./models/latest/ 
